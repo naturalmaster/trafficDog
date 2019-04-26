@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/note_edit_dialog_item_char_with_blank_layout"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_marginLeft="18dp"
+    android:clickable="true">
+
+
+    <ImageView
+        android:id="@+id/ico_note_sort_order"
+        style="@style/note_edit_bottom_dailog_item_right_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_note_sort_desc"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_note_sort_item"
+        style="@style/note_edit_bottom_dailog_item_left_style"
+        android:layout_toLeftOf="@+id/ico_note_sort_order"
+        android:textColor="@drawable/note_edit_conflict_tab_text_selector"
+        tools:text="character space" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:background="#dfdfdf" />
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TrafficDog</string>
+    <string name="main_list_menu_search">搜索</string>
+    <string name="main_list_menu_sort">排序</string>
+    <string name="sort_option_title">名称</string>
+    <string name="sort_option_system_app">系统APP</string>
+    <string name="sort_option_menu_title">排序方式</string>
+    <string name="public_ok">确定</string>
+    <string name="public_cancel">取消</string>
+    <string name="sort_dialog_title">排序方式</string>
+    </resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000</color>
+
+
+    <!-- dialog -->
+    <color name="dialog_item_important_background">#FFebc200</color>
+    <color name="dialog_item_important_text_color">#FFFFFFFF</color>
+    <color name="dialog_item_normal_background">#FFFFFFFF</color>
+    <color name="dialog_item_normal_text_color">#FF515151</color>
+    <color name="dialog_item_description_text_color">#726f6a</color>
+    <color name="dialog_item_description_background_color">#f6f6f6</color>
+    <color name="dialog_item_description_divide_color">#dfdfdf</color>
+    <color name="phone_public_dialog_title_text_color">#222226</color>
+    <color name="phone_public_dialog_gray_text_color">#535252</color>
+    <color name="phone_public_dialog_bule_text_color">#ff0ea7fa</color>
+    <color name="phone_public_dialog_black_text_color">#ff222222</color>
+    <color name="phone_public_dialog_highlight_color">#fff5484c</color>
+    <color name="phone_public_dialog_button_text_color">#ff0f0f0f</color>
+    <color name="phone_public_list_press_color">#ffececec</color>
+
+    <color name="public_dialog_description_divide_color">#fbe167</color>
+
+
+    <color name="note_edit_conflict_tab_selected">#f8cd02</color>
+    <color name="note_edit_conflict_tab_unselected">#0f0f0f</color>
+</resources>
