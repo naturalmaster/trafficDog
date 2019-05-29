@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 
+import view.main.MainActivity;
 import view.stats.StatsActivity;
 
 public class PermissionTool {
@@ -20,12 +21,13 @@ public class PermissionTool {
 
 
     public static void requestPermissions(Context context) {
-        if (!hasPermissionToReadNetworkHistory(context)) {
-            return;
-        }
         if (!hasPermissionToReadPhoneStats(context)) {
             requestPhoneStateStats(context);
         }
+        if (!hasPermissionToReadNetworkHistory(context)) {
+            return;
+        }
+
     }
 
 
@@ -50,7 +52,7 @@ public class PermissionTool {
                     return;
                 }
                 opsManager.stopWatchingMode(this);
-                Intent intent = new Intent(context, StatsActivity.class);
+                Intent intent = new Intent(context, MainActivity.class);
                 Bundle bundle = ((Activity)context).getIntent().getExtras();
                 if (bundle != null){
                     intent.putExtras(bundle);

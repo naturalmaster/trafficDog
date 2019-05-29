@@ -40,4 +40,13 @@
     <dimen name="phone_public_dialog_content_view_margin_m">16dp</dimen>
     <dimen name="phone_public_dialog_title_padding_top">0dp</dimen>
     <dimen name="phone_public_dialog_title_padding_bottom">16dp</dimen>
+
+
+    <dimen name="phone_public_recycler_height">120dp</dimen>
+    <dimen name="recycler_item_text_size">12sp</dimen>
+    <dimen name="recycler_item_topbar_text_size">48sp</dimen>
+    <dimen name="recycler_item_topbar_text_size_flow">36sp</dimen>
+    <dimen name="recycler_item_topbar_text_size_text">28sp</dimen>
+
+
 </resources>

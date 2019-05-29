@@ -3,17 +3,6 @@ package sharedstorage;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.util.Base64;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OptionalDataException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import base.TrafficApp;
 import utilities.IPersistent;
@@ -127,31 +116,9 @@ class SPPersistent implements IPersistent {
         return rst;
     }
 
-    @Override
-    public boolean getBoolean(IPersistentPublicKeys key, boolean defValue) {
-        getPublicSp();
-        boolean rst =defValue;
-        try {
-            rst = publicSp.getBoolean(key.getString(), defValue);
-        } catch (ClassCastException ex) {  //几率很小，如被篡改类型
-            remove(key);
-            ex.printStackTrace();
-        }
-        return rst;
-    }
 
-    @Override
-    public float getFloat(IPersistentPublicKeys key, float defValue) {
-        getPublicSp();
-        float rst = defValue;
-        try {
-            rst = publicSp.getFloat(key.getString(), defValue);
-        } catch (ClassCastException ex) {
-            remove(key);
-            ex.printStackTrace();
-        }
-        return rst;
-    }
+
+  
 
     @Override
     public int getInt(IPersistentPublicKeys key, int defValue) {
@@ -195,6 +162,28 @@ class SPPersistent implements IPersistent {
         String rst = defValue;
         try {
             rst = publicSp.getString(key, defValue);
+        } catch (ClassCastException ex) {
+            remove(key);
+            ex.printStackTrace();
+        }
+        return rst;
+    }
+
+    @Override
+    public boolean putBoolean(String key, boolean value) {
+        getPublicSp();
+        SharedPreferences.Editor editor = publicSp.edit();
+        editor.putBoolean(key, value);
+        boolean rst = editor.commit();
+        return rst;
+    }
+
+    @Override
+    public boolean getBoolean(String key, boolean defVal) {
+        getPublicSp();
+        boolean rst = defVal;
+        try {
+            rst = publicSp.getBoolean(key, defVal);
         } catch (ClassCastException ex) {
             remove(key);
             ex.printStackTrace();

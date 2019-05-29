@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,11 +18,17 @@ import com.hfj.trafficdog.core.Appinfo;
 
 import java.util.List;
 
+import utilities.NetworkPeriod;
+import utilities.NetworkStatsStatistics;
+import utilities.NetworkType;
+import utilities.TrafficTool;
 import view.main.listener.OnPackageClickListener;
 
 public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoAdapter.AppInfoViewHolder>{
     List<Appinfo> appinfoList;
     OnPackageClickListener mListener;
+
+    private NetworkPeriod periodType = NetworkPeriod.TODAY;
 
 
     public AppInfoAdapter( List<Appinfo> appinfoList,OnPackageClickListener mListener) {
@@ -40,8 +47,9 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoAdapter.AppInfoV
     public void onBindViewHolder(@NonNull AppInfoViewHolder appInfoViewHolder, int i) {
         Appinfo appinfo = appinfoList.get(i);
         appInfoViewHolder.titleView.setText(appinfo.getName());
-        appInfoViewHolder.packageName.setText(appinfo.getPackageName());
-        appInfoViewHolder.versionText.setText(appinfo.getVersion() + appinfo.isSystemApp());
+        appInfoViewHolder.flowView.setText(
+                TrafficTool.BparseToRacialDigit(appinfo.getRxMobileByte() + appinfo.getTxMobileByte())
+        );
         try {
             appInfoViewHolder.imageView.setImageDrawable(appInfoViewHolder.mContext.getPackageManager().getApplicationIcon(appinfo.getPackageName()));
         } catch (PackageManager.NameNotFoundException e) {
@@ -55,19 +63,24 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoAdapter.AppInfoV
     }
 
 
+    public NetworkPeriod getPeriodType() {
+        return periodType;
+    }
+
+    public void setPeriodType(NetworkPeriod periodType) {
+        this.periodType = periodType;
+    }
 
     class AppInfoViewHolder extends RecyclerView.ViewHolder {
         TextView titleView;
-        TextView packageName;
-        TextView versionText;
+        TextView flowView;
         Context mContext;
         AppCompatImageView imageView;
 
         public AppInfoViewHolder(View view) {
             super(view);
+            this.flowView = view.findViewById(R.id.main_view_tx_flow);
             this.titleView = view.findViewById(R.id.main_view_title);
-            this.packageName = view.findViewById(R.id.main_view_subtitle);
-            this.versionText = view.findViewById(R.id.main_view_version);
             this.imageView = view.findViewById(R.id.main_view_list_icon);
             this.mContext = view.getContext();
             view.setOnClickListener(new View.OnClickListener() {

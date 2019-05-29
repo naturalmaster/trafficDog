@@ -25,7 +25,8 @@ public class AppSorter {
          */
         public enum SortOptions {
             TITLE(R.string.sort_option_title, sTitleComparator),
-            SYSTEMAPP(R.string.sort_option_system_app,sSystemAppComparator);
+            SYSTEMAPP(R.string.sort_option_system_app,sSystemAppComparator),
+            NETFLOW(R.string.sort_option_net_flow,sFlowAppComparator);
 
             public final int msgRes;
             public final Comparator<Appinfo> comparator;
@@ -54,7 +55,6 @@ public class AppSorter {
                 if (TextUtils.isEmpty(title)
                         && TextUtils.isEmpty(packageName)
                         ) {
-                    //fix: #352213  旧版纯图片的便签，摘要是空白的。在adapter渲染时才赋值[图片]
                     appinfoBean.setName("[没有名字]");
                 }
             }
@@ -87,7 +87,7 @@ public class AppSorter {
         }
 
         public List<SortOptions> getSortOptions() {
-            return Arrays.asList( SortOptions.TITLE,SortOptions.SYSTEMAPP);
+            return Arrays.asList( SortOptions.TITLE,SortOptions.SYSTEMAPP,SortOptions.NETFLOW);
         }
 
         private Comparator<Appinfo> getComparator(int sortType) {
@@ -97,7 +97,7 @@ public class AppSorter {
                     return option.comparator;
                 }
             }
-            return sTitleComparator;
+            return sFlowAppComparator;
         }
         private static final Comparator<Object> CHINA_COMPARE = Collator.getInstance(java.util.Locale.CHINA);
 
@@ -126,6 +126,21 @@ public class AppSorter {
 
                 if (!lApp.isSystemApp() && rApp.isSystemApp()){
                     return -1;
+                }
+                return 0;
+            }
+        };
+
+        private static Comparator<Appinfo> sFlowAppComparator = new Comparator<Appinfo>() {
+            @Override
+            public int compare(Appinfo lApp, Appinfo rApp) {
+                long lFlow = lApp.getRxMobileByte() + lApp.getTxMobileByte();
+                long rFlow = rApp.getRxMobileByte() + rApp.getTxMobileByte();
+                long res = lFlow - rFlow;
+                if (res > 0){
+                    return -1;
+                } else if (res < 0){
+                    return 1;
                 }
                 return 0;
             }

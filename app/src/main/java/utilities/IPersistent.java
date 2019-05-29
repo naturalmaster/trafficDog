@@ -9,8 +9,6 @@ import sharedstorage.IPersistentPublicKeys;
  * 持久化存储接口
  */
 public interface IPersistent {
-    // ============public存储 =============
-
     boolean putBoolean(IPersistentPublicKeys key, boolean value);
 
     boolean putFloat(IPersistentPublicKeys key, float value);
@@ -31,10 +29,6 @@ public interface IPersistent {
 
     boolean contains(IPersistentPublicKeys key);
 
-    boolean getBoolean(IPersistentPublicKeys key, boolean defValue);
-
-    float getFloat(IPersistentPublicKeys key, float defValue);
-
     int getInt(IPersistentPublicKeys key, int defValue);
 
     long getLong(IPersistentPublicKeys key, long defValue);
@@ -45,7 +39,9 @@ public interface IPersistent {
 
     String getString(String key, String defValue);
 
-    // ============public存储end =============
+    boolean putBoolean(String key, boolean value);
+
+    boolean getBoolean(String key, boolean defVal);
 
 
 }

@@ -56,81 +56,44 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             >
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/network_stats_bar_chart"
+                android:layout_width="match_parent"
+                android:layout_height="280dp">
+
+            </com.github.mikephil.charting.charts.BarChart>
             <TextView
-                android:id="@+id/network_stats_manager_all_Rx_title"
+                android:id="@+id/network_stats_today_usage"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="接受到的总流量" />
+                android:text="今日使用流量" />
             <TextView
-                android:id="@+id/network_stats_manager_all_Rx_value"
+                android:id="@+id/network_stats_today_val"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="121212121212"/>
             <TextView
-                android:id="@+id/network_stats_manager_all_Tx_title"
+                android:id="@+id/network_stats_weekly_usage"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="发送出去总流量" />
+                android:text="本周使用" />
             <TextView
-                android:id="@+id/network_stats_manager_all_Tx_value"
+                android:id="@+id/network_stats_weekly_val"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="121212121212"/>
 
-            <TextView
-                android:id="@+id/network_stats_package_data_title"
-                style="@style/TextAppearance.AppCompat.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Package data:"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/network_stats_package_rx_title"
-                style="@style/TextAppearance.AppCompat.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Rx" />
 
-            <TextView
-                android:id="@+id/network_stats_package_rx_value"
-                style="@style/TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/divider"
-                android:layout_below="@+id/network_stats_package_rx_title"
-                android:padding="8dp"
-                android:text="Not implemented" />
-
-            <TextView
-                android:id="@+id/network_stats_package_tx_title"
-                style="@style/TextAppearance.AppCompat.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/network_stats_package_rx_value"
-                android:layout_alignStart="@+id/network_stats_package_rx_value"
-                android:layout_below="@+id/network_stats_package_rx_value"
-                android:padding="8dp"
-                android:text="Tx" />
-
-            <TextView
-                android:id="@+id/network_stats_package_tx_value"
-                style="@style/TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/network_stats_package_tx_title"
-                android:padding="8dp"
-                android:text="Not implemented" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
